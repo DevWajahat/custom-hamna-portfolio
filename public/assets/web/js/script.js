@@ -2,7 +2,7 @@
 * ----------------------------------------------------------------------------------------
 Author       : Tanvir Hossain
 Template Name: Wize - Creative Personal Portfolio
-Version      : 1.0                                          
+Version      : 1.0
 * ----------------------------------------------------------------------------------------
 */
 
@@ -125,7 +125,7 @@ Version      : 1.0
         //     });
 
         // };
-        // // Call the functions 
+        // // Call the functions
         // magnifPopup();
 
         $('#open-popup1').magnificPopup({
@@ -201,7 +201,7 @@ Version      : 1.0
               },
               {
                 src: '../assets/images/hampro/Artboard 7.jpg',
-              },    
+              },
 
 
             ],
@@ -551,11 +551,22 @@ Version      : 1.0
                 mobile: false, // trigger animations on mobile devices (default is true)
                 live: true // act on asynchronously loaded content (default is true)
             });
+        
+
             wow.init();
+
+            $(document).on('livewire:navigated', function () {
+
+
+                wow.init();
+            })
+
         }
 
 
     });
+
+
 
 
     /* ==========================================================================
@@ -597,7 +608,7 @@ Version      : 1.0
 
     });
 
-    
+
     /* ==========================================================================
        When document is loaded, do
        ========================================================================== */
@@ -639,6 +650,6 @@ Version      : 1.0
 
 
 
-    
+
 
 })(window.jQuery);
