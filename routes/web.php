@@ -18,8 +18,11 @@ Route::get('about',[AboutController::class,'index'])->name('about');
 
 // Route Projects
 
-Route::get('projects',[ProjectController::class,'index'])->name('projects');
-
+// Route::get('projects',[ProjectController::class,'index'])->name('projects');
+Route::prefix('projects')->controller(ProjectController::class)->name('projects.')->group(function () {
+    Route::get('/','index')->name('index');
+    Route::get('detail','detail')->name('details');
+});
 // Route Contacts
 
 Route::get('contact', [ContactController::class,'index'])->name('contact');
