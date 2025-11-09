@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Web\AboutController;
+use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ProjectController;
@@ -26,5 +27,11 @@ Route::prefix('projects')->controller(ProjectController::class)->name('projects.
 // Route Contacts
 
 Route::get('contact', [ContactController::class,'index'])->name('contact');
+
+// Route Blogs
+Route::prefix('blogs')->controller(BlogController::class)->name('blogs.')->group(function () {
+    Route::get('/','index')->name('index');
+    Route::get('details','detail')->name('details');
+});
 
 Route::get('admin',[AdminHomeController::class,'index'])->name('admin.index');
