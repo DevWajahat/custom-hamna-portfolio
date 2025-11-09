@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\BlogController;
@@ -34,4 +35,6 @@ Route::prefix('blogs')->controller(BlogController::class)->name('blogs.')->group
     Route::get('details','detail')->name('details');
 });
 
-Route::get('admin',[AdminHomeController::class,'index'])->name('admin.index');
+
+// login
+Route::get('admin/login', [AuthController::class,'login_view'])->name('admin.login')->middleware('guest');

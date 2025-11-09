@@ -1,4 +1,4 @@
-// Declare gsap variable
+
 const gsap = window.gsap
 
 document.addEventListener("DOMContentLoaded", () => {
