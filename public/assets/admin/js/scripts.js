@@ -1,5 +1,4 @@
-
-const gsap = window.gsap
+const gsap = window.gsap;
 
 document.addEventListener("DOMContentLoaded", () => {
   const tabPanes = document.querySelectorAll(".tab-pane")

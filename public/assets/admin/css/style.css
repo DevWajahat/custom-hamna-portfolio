@@ -217,8 +217,11 @@ body {
   min-width: 18px;
 }
 
+/* dropdown-start */
+/* === COLLAPSIBLE DROPDOWNS (AdminLTE Style – Click Only) === */
 .nav-dropdown {
   position: relative;
+  width: 100%;
 }
 
 .dropdown-toggle {
@@ -234,13 +237,21 @@ body {
   border: 1px solid transparent;
   cursor: pointer;
   background: none;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
 }
 
 .dropdown-toggle:hover {
   background: rgba(180, 0, 255, 0.12);
   color: var(--primary-purple);
   border-color: rgba(180, 0, 255, 0.25);
+}
+
+.dropdown-toggle[aria-expanded="true"] {
+  background: rgba(180, 0, 255, 0.18);
+  color: var(--primary-purple);
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 15px rgba(180, 0, 255, 0.15);
 }
 
 .dropdown-toggle span {
@@ -252,26 +263,31 @@ body {
 
 .dropdown-icon {
   font-size: 12px;
-  transition: var(--transition);
-  min-width: 12px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(180, 0, 255, 0.6);
 }
 
-.nav-dropdown.open .dropdown-icon {
+.dropdown-toggle[aria-expanded="true"] .dropdown-icon {
   transform: rotate(180deg);
+  color: var(--primary-purple);
 }
 
-.dropdown-menu {
+/* === COLLAPSIBLE MENU (No Float, Inline) === */
+.dropdown-menu,
+.submenu {
   max-height: 0;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0 8px;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.nav-dropdown.open .dropdown-menu {
-  max-height: 500px;
+.nav-dropdown.open > .dropdown-menu,
+.dropdown-submenu.open > .submenu {
+  max-height: 600px;
+  padding: 8px;
 }
 
 .dropdown-item {
@@ -283,10 +299,7 @@ body {
   color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   font-size: 13px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  background: none;
-  transition: var(--transition);
+  transition: all 0.25s ease;
   width: 100%;
   justify-content: flex-start;
 }
@@ -296,13 +309,20 @@ body {
   background: rgba(180, 0, 255, 0.1);
   border-color: rgba(180, 0, 255, 0.2);
   transform: translateX(4px);
+  box-shadow: 0 0 12px rgba(180, 0, 255, 0.1);
 }
 
 .dropdown-item i {
   font-size: 14px;
   min-width: 16px;
+  color: rgba(180, 0, 255, 0.6);
 }
 
+.dropdown-item:hover i {
+  color: var(--primary-purple);
+}
+
+/* === SUBMENU === */
 .dropdown-submenu {
   position: relative;
 }
@@ -310,40 +330,64 @@ body {
 .submenu-icon {
   font-size: 10px;
   margin-left: auto;
-  transition: var(--transition);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(180, 0, 255, 0.5);
   min-width: 12px;
 }
 
 .dropdown-submenu.open .submenu-icon {
   transform: rotate(90deg);
-}
-
-.submenu {
-  max-height: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0;
-}
-
-.dropdown-submenu.open .submenu {
-  max-height: 300px;
+  color: var(--primary-purple);
 }
 
 .submenu .dropdown-item {
   padding-left: 36px;
-  font-size: 12px;
+  font-size: 12.5px;
 }
 
-.sidebar-footer {
-  margin-top: auto;
-  padding: 16px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(180, 0, 255, 0.15);
-  background: rgba(180, 0, 255, 0.08);
+/* === MOBILE: No changes needed === */
+@media (max-width: 768px) {
+  .dropdown-menu,
+  .submenu {
+    padding: 0 4px;
+  }
+  .nav-dropdown.open > .dropdown-menu,
+  .dropdown-submenu.open > .submenu {
+    padding: 6px 4px;
+  }
 }
+
+.nav-dropdown,
+.dropdown-submenu {
+  position: relative;
+  width: 100%;
+}
+
+/* GPU Acceleration */
+.dropdown-menu,
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 8px;
+  transition: none; /* Remove CSS transition */
+  will-change: max-height;
+  contain: layout;
+  transform: translateZ(0); /* Force GPU */
+  backface-visibility: hidden;
+}
+
+.nav-dropdown.open > .dropdown-menu,
+.dropdown-submenu.open > .submenu {
+  padding: 8px;
+}
+
+/* Icons */
+.dropdown-icon,
+.submenu-icon {
+  transition: none; /* Let GSAP handle */
+  will-change: transform;
+}
+/* drop down end */
 
 .user-profile {
   display: flex;
