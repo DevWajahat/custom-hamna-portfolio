@@ -538,26 +538,26 @@
         });
 
         // Optional: Hover open (AdminLTE style)
-        document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
-            dropdown.addEventListener("mouseenter", () => {
-                const menu = dropdown.querySelector(".dropdown-menu");
-                if (menu && window.innerWidth > 768) {
-                    menu.classList.add("show");
-                    dropdown
-                        .querySelector(".dropdown-toggle")
-                        ?.setAttribute("aria-expanded", "true");
-                }
-            });
-            dropdown.addEventListener("mouseleave", () => {
-                const menu = dropdown.querySelector(".dropdown-menu");
-                if (menu && window.innerWidth > 768) {
-                    menu.classList.remove("show");
-                    dropdown
-                        .querySelector(".dropdown-toggle")
-                        ?.setAttribute("aria-expanded", "false");
-                }
-            });
-        });
+        // document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
+        //     dropdown.addEventListener("mouseenter", () => {
+        //         const menu = dropdown.querySelector(".dropdown-menu");
+        //         if (menu && window.innerWidth > 768) {
+        //             menu.classList.add("show");
+        //             dropdown
+        //                 .querySelector(".dropdown-toggle")
+        //                 ?.setAttribute("aria-expanded", "true");
+        //         }
+        //     });
+        //     dropdown.addEventListener("mouseleave", () => {
+        //         const menu = dropdown.querySelector(".dropdown-menu");
+        //         if (menu && window.innerWidth > 768) {
+        //             menu.classList.remove("show");
+        //             dropdown
+        //                 .querySelector(".dropdown-toggle")
+        //                 ?.setAttribute("aria-expanded", "false");
+        //         }
+        //     });
+        // });
         // ---- 4.8 SUB‑MENU --------------------------------------------------
         document
             .querySelectorAll(".dropdown-submenu > .dropdown-item")

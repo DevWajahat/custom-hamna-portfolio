@@ -11,7 +11,6 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 
 Route::middleware(['CheckAdminAuth','preventBack'])->group(function () {
 
-
     Route::get('/', [HomeController::class, 'index'])->name('index');
 
 });

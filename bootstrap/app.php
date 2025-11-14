@@ -5,6 +5,7 @@ use App\Http\Middleware\PreventBackHistory;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,19 +23,20 @@ return Application::configure(basePath: dirname(__DIR__))
 
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+
         $middleware->alias([
             'CheckAdminAuth' => CheckAdminAuthentication::class,
             'preventBack' => PreventBackHistory::class,
-            // 'AssignmentCheckAcceptance' =>  AssignmentAccept::class,
         ]);
 
-        $middleware->redirectUsersTo(function (Request $request) {
-            $user = $request->user();
+        // if(!auth()->user()){
 
-            return route('admin.login');
-        });
+        //     $middleware->redirectUsersTo('admin/login');
+        // }
+        // else{
+        //     return redirect()->route('admin.index');
+        // }
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+
     })->create();

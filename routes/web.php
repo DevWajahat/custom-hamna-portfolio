@@ -37,4 +37,6 @@ Route::prefix('blogs')->controller(BlogController::class)->name('blogs.')->group
 
 
 // login
-Route::get('admin/login', [AuthController::class,'login_view'])->name('admin.login')->middleware('guest');
+Route::get('admin/login', [AuthController::class,'login_view'])->name('admin.login')->middleware('CheckAdminAuth');
+Route::get('admin/forgot-password', [AuthController::class,'forgotPassword'])->name('admin.forgot.password')->middleware('guest');
+Route::get('admin/reset-password/{token}',[AuthController::class,'resetPassword'])->name('admin.reset.password');

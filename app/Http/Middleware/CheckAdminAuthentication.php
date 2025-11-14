@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response; // Use the Auth facade for clarity
 
 class CheckAdminAuthentication
 {
@@ -15,10 +16,20 @@ class CheckAdminAuthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user() !== null && auth()->user()->role == 'admin') {
+        $isAuthenticatedAdmin = Auth::check() && Auth::user()->role === 'admin';
+
+        if ($isAuthenticatedAdmin) {
+            if ($request->routeIs('admin.login')) {
+                return redirect()->route('admin.index');
+            }
+
             return $next($request);
-        } else {
+        }
+
+        if (! $request->routeIs('admin.login')) {
             return redirect()->route('admin.login');
         }
+
+        return $next($request);
     }
 }

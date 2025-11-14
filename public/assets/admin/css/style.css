@@ -241,11 +241,6 @@ body {
   text-align: left;
 }
 
-.dropdown-toggle:hover {
-  background: rgba(180, 0, 255, 0.12);
-  color: var(--primary-purple);
-  border-color: rgba(180, 0, 255, 0.25);
-}
 
 .dropdown-toggle[aria-expanded="true"] {
   background: rgba(180, 0, 255, 0.18);
@@ -599,7 +594,7 @@ body {
 .tab-btn.active {
   color: var(--primary-purple);
   border-bottom-color: var(--primary-purple);
-  box-shadow: 0 2px 12px rgba(180, 0, 255, 0.2);
+  /* box-shadow: 0 2px 12px rgba(180, 0, 255, 0.2); */
 }
 
 .tab-content {

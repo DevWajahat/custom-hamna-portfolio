@@ -21,7 +21,7 @@ class Login extends Component
    {
     $validated = $this->validate([
         'email'=> 'required|email|max:255',
-        'password' => 'required|min:8|max:8'
+        'password' => 'required|min:8|max:16'
     ]);
 
 
@@ -33,7 +33,7 @@ class Login extends Component
         else {
 
             $this->addError('email', 'The email or password is incorrect.');
-        
+
         }
     }
 }
